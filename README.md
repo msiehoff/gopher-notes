@@ -68,8 +68,12 @@ channelCh <- make(chan string)
 **Description:**
 Create a number of `worker(inputCh, outputCh chan <type>)` functions.  Each function will receive work to do via `inputCh` & return results via `outputCh`.  Acts as a sort of load balancer. 
 
+For an example see [semaphore.go](https://github.com/msiehoff/gopher-notes/blob/master/concurrency/semaphore.go)
+
 
 ## Closing Channels
+
+
 
 ## Nil Channels
 
