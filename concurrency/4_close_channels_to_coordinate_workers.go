@@ -6,9 +6,11 @@ import (
 )
 
 // use closing of a channel as communication
+// all channels will receive `close` message (not true for other types of messages sent via channel)
+// this can be used to start/stop all workers simultaneously
 
 func main() {
-	//startWorkAllAtOnce()
+	startWorkAllAtOnce()
 
 	stopSimultaneously()
 }
