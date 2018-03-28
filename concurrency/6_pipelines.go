@@ -20,6 +20,8 @@ import "fmt"
 // - stages close their outbound channels when all the send operations are done.
 // - stages keep receiving values from inbound channels until those channels are closed.
 
+// This pattern allows each receiving stage to be written as a range loop and ensures that
+// all goroutines exit once all values have been successfully sent downstream.
 
 // ------------------ Simple Pipeline Example ------------------
 func main() {

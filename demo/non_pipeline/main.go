@@ -7,10 +7,6 @@ import (
 )
 
 func main() {
-	savePlayerInfo()
-}
-
-func savePlayerInfo() {
 	playerURLs := getPlayerURLs()
 
 	doneCh := make(chan bool)
@@ -30,6 +26,41 @@ func getAndSavePlayer(url string, doneCh chan bool) {
 	doneCh <- true
 }
 
+func getPlayerURLs() []string {
+	simulateWait()
+	return playerURLs
+}
+
+func getPlayer(url string) Player {
+	simulateWait()
+	p := chooseRandomPlayer()
+
+	fmt.Printf("\nPlayer Gotten: %v", p.String())
+
+	return p
+}
+
+func simulateWait() {
+	timer := time.NewTimer(2 * time.Second)
+
+	// Wait until timer is done
+	// to simulate saving to DB
+	<- timer.C
+}
+
+func chooseRandomPlayer() Player {
+	return Player {
+		Name: Players[rand.Intn(5)],
+		Team: Teams[rand.Intn(5)],
+	}
+}
+
+func savePlayer(player Player) {
+	simulateWait()
+
+	fmt.Printf("\nPlayer Saved: %v", player.String())
+}
+
 var playerURLs = []string{
 	"https://www.mlssoccer.com/players/josef-martinez",
 	"https://www.mlssoccer.com/players/nicolas-lodeiro",
@@ -41,31 +72,6 @@ var playerURLs = []string{
 	"https://www.mlssoccer.com/players/kyle-guilstre",
 	"https://www.mlssoccer.com/players/rico-rodriguez",
 	"https://www.mlssoccer.com/players/jefferson-savarino",
-}
-
-func getPlayerURLs() []string {
-	return playerURLs
-}
-
-func getPlayer(url string) Player {
-	p := Player {
-		Name: Players[rand.Intn(5)],
-		Team: Teams[rand.Intn(5)],
-	}
-
-	fmt.Printf("\nPlayer Gotten: %v", p.String())
-
-	return p
-}
-
-func savePlayer(player Player) {
-	timer := time.NewTimer(2 * time.Second)
-
-	// Wait until timer is done
-	// to simulate saving to DB
-	<- timer.C
-
-	fmt.Printf("\nPlayer Saved: %v", player.String())
 }
 
 var Players = []string {
