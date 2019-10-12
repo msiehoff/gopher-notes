@@ -1,0 +1,14 @@
+goos: darwin
+goarch: amd64
+BenchmarkMyFunc-8   	   13138	     91584 ns/op	   48678 B/op	    2000 allocs/op
+BenchmarkMyFunc-8   	   13323	     89453 ns/op	   48677 B/op	    2000 allocs/op
+BenchmarkMyFunc-8   	   13268	     89279 ns/op	   48678 B/op	    2000 allocs/op
+BenchmarkMyFunc-8   	   13293	     89844 ns/op	   48678 B/op	    2000 allocs/op
+BenchmarkMyFunc-8   	   13260	     89786 ns/op	   48678 B/op	    2000 allocs/op
+BenchmarkMyFunc-8   	   13290	     90595 ns/op	   48678 B/op	    2000 allocs/op
+BenchmarkMyFunc-8   	   13339	     89786 ns/op	   48678 B/op	    2000 allocs/op
+BenchmarkMyFunc-8   	   13386	     90031 ns/op	   48678 B/op	    2000 allocs/op
+BenchmarkMyFunc-8   	   13114	     91242 ns/op	   48678 B/op	    2000 allocs/op
+BenchmarkMyFunc-8   	   13311	     90054 ns/op	   48678 B/op	    2000 allocs/op
+PASS
+ok  	_/Users/msiehoff/Documents/code/gopher-notes/performance	21.123s
