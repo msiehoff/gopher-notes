@@ -7,16 +7,19 @@ Benchmarking is helpful when measuring, optimizing or debugging the performance 
 ### Optimization Process
 
 **1. Is this code/app slow**
+
 Always ask yourself this as a first step, there's no benefit to optimizing something that's fast enough or cannot be made significantly faster. Performance optimizations can come with added complexity, making code harder to understand or maintain, most of the time this is not a useful tradeoff. 
 
 What does fast mean for the context you're working in? How important is speed vs. understandability?
 
 **2. Find performance bottlenecks**
+
 Optimizing performance is all about addressing bottlenecks. It's easy to see code that _looks_ slow & jump to the conclusion that it is. Putting time & energy into optiziming the wrong area can lead to frustration & wasted effort.
 
 The best way to find bottlenecks is by profiling your code. Often cpu profiling (how much time the cpu spends in different spots of the code) is a good place to start, moving to memory profiling if you see a lot of references to `malloc` methods.  Running the tracer can be useful for apps that rely heavily on go routines.
 
 **3. Reliably measure current performance**
+
 Profile or run benchmarks on the existing code.  See more on running reliable benchmarks below.
 
 **4. Make sure the code is unit tested**
@@ -58,7 +61,7 @@ go test -run $$$ -bench <benchmarkFunc> -count=10 > <filename>
 go test -run $$$ -bench BenchmarkMyFunc -count=10 > beforeChanges
 ```
 
-TODO: img
+see [slower](https://github.com/msiehoff/gopher-notes/blob/perf-profile/performance/slower) for example output.
 
 Benchstat shows us variance in groups of runs. The higher the variance, the less reliable the results.
 
@@ -66,7 +69,6 @@ Benchstat shows us variance in groups of runs. The higher the variance, the less
 // Use benchstat to see the variation in the benchmark results
 benchstat <filename>
 ```
-TODO: img
 
 ```
 // Optimize then rerun benchmarks
@@ -75,7 +77,8 @@ go test -run $$$ -bench BenchmarkMyFunc -count=10 > afterChanges
 // Compare benchmark output files with benchstat
 benchstat beforeChanges afterChanges
 ```
-TODO: img
+
+![image](https://user-images.githubusercontent.com/901644/66795025-f43cb580-eec8-11e9-898e-b804babaaba3.png)
 
 ### Profiling with Benchmarks
 
